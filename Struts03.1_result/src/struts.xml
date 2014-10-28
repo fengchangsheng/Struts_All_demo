@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+	<struts>
+		<constant name="struts.devMode" value="true"></constant>
+		<!-- 
+			action配置 name 页面请求的action值
+			class= "完整的类名,默认值是ActionSupport"
+			com.opensymphony.xwork2.ActionSupport
+			method="方法名,默认方法名为execute()"
+		 -->
+		<!-- 
+			<result>/hello2.jsp</result>绝对路径写法	 webroot下找路径	
+			<result>hello2.jsp</result>相对路径写法
+			标准配置：
+			name=""   跟action返回的字符串匹配
+			type=""   默认值为dispatcher   redirectAction[]  redirect
+		 -->
+		<package name="resultDemo" namespace="/xx" extends="struts-default">
+			<action name="index" class="com.wepull.action.Index3Action" method="list">
+				<result name="abc">abc.jsp</result>		
+				<result name="ddd" type="dispatcher">/xx/abc.jsp</result><!-- 用了/只能写绝对路径 -->		
+			</action>
+			<action name="hello2">
+				<result>/hello2.jsp</result><!-- 此处没有/会404 -->			
+			</action>
+		</package>
+		
+		<constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
+		<!-- 支持动态方法调用
+			http://localhost:8080/Struts03.1/Index3!list
+		 -->
+		<package name="dynamicDemo" namespace="" extends="struts-default">
+			<action name="Index3" class="com.wepull.action.Index3Action">
+				<result name="abc">/hello1.jsp</result>
+			</action>
+		</package>
+		
+	</struts>

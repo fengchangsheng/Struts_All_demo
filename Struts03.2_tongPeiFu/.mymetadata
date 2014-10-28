@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="Struts03.2_tongPeiFu"
+  id="myeclipse.1408345180218"
+  context-root="/Struts03.2_tongPeiFu"
+  j2ee-spec="5.0"
+  archive="Struts03.2_tongPeiFu.war">
+  <attributes>
+    <attribute name="webrootdir" value="/WebRoot" />
+  </attributes>
+</project-module>
+

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+	<struts>
+		<constant name="struts.devMode" value="true"></constant>
+		<!-- 
+			package name=包名
+			namespace=""命名空间   默认值""
+			给namespace命名以/开头   决定访问路径
+			namespace="/xx/yyy" 访问路径必须是/xx/yyy/*[.action]
+			extends="struts-default" 必须继承  不写默认继承
+		 -->
+		<package name="default" namespace="" extends="struts-default">
+			<action name="index" ><!-- 当访问的namespace下的action不存在时会到默认的namespace下找 -->
+				<result>/hello1.jsp</result>
+			</action>	
+		</package>
+		<!-- 
+			action配置 name 页面请求的action值
+			class= "完整的类名,默认值是ActionSupport"
+			com.opensymphony.xwork2.ActionSupport
+			method="方法名,默认方法名为execute()"
+		 -->
+		<!-- 
+			<result>/hello2.jsp</result>绝对路径写法	 webroot下找路径	
+			<result>hello2.jsp</result>相对路径写法
+			
+		 -->
+		<package name="pk2" namespace="/xx/yy" extends="struts-default">
+			<action name="hello2">
+				<result>/hello2.jsp</result><!-- 此处没有/会404 -->			
+			</action>
+		</package>
+	</struts>

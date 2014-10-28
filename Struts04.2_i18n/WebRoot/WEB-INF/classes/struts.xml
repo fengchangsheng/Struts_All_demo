@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+	<struts>
+		<constant name="struts.custom.i18n.resources" value="wp"></constant>
+		<constant name="struts.serve.static.browserCache" value="false"></constant><!-- 清理缓存(不被缓存) -->
+		<!-- CSS样式表处理
+		struts.ui.theme=xhtml  simple简化UI
+		struts.ui.templateDir=template
+		struts.ui.templateSuffix=ftl
+		 -->
+	   <package name="pk1" namespace="" extends="struts-default">
+	     <action name="login">
+	        <result>index.jsp</result>
+	     </action>
+	   </package>
+	   <package name="pk2" namespace="/user" extends="struts-default">
+	      <action name="*_*" 
+	      class="com.wepull.actions.{1}Action" method="{2}">
+	         <result>{1}_{2}.jsp</result>
+	         <result name="list" type="redirectAction">
+	         User_list</result>
+	       </action>
+	   </package>
+	
+	</struts>
